@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Data";
+}
+
+
+@using (Html.BeginForm("Upload", "Home", FormMethod.Post,
+  new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <legend>Browse File</legend>
+        <div class="editor-field">
+            @Html.TextBox("file", "", new { type = "file" })
+        </div>
+        <div class="editor-field">
+            <input type="submit" value="Import!" />
+        </div>
+    </fieldset>
+}
+
+
+<style>
+    td {
+        background-color: white;
+    }
+</style>
+
+<section class="pb-5 mb-md-2">
+    <div class="card border-0 shadow-sm">
+        <div class="card-body text-center">
+            <!--Опции-->
+            <!-- Basic table -->
+        </div>
+        <!-- Basic table -->
+        <div class="table-responsive">
+            <h5>
+                <b>
+                    Futures
+                </b>
+            </h5>
+            <div class="scrollable" style="height: 80%;">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Payroll_Number</th>
+
+                            <th>Forenames</th>
+                            
+                            <th>Surname</th>
+                            
+                            <th>Date_of_Birth</th>
+                            
+                            <th>Telephone</th>
+                            
+                            <th>Mobile</th>
+
+                            <th>Address</th>
+
+                            <th>Address_2</th>
+
+                            <th>Postcode</th>
+
+                            <th>EMail_Home</th>
+
+                            <th>Start_Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (ViewBag.data != null)
+                        {
+                            foreach (var item in ViewBag.data)
+                            {
+                                <tr>
+                                    <td scope="row">@item.Payroll_Number</td>
+                                    <td scope="row">@item.Forenames</td>
+                                    <td scope="row">@item.Surname</td>
+                                    <td scope="row">@item.Date_of_Birth</td>
+                                    <td scope="row">@item.Telephone</td>
+                                    <td scope="row">@item.Mobile</td>
+                                    <td scope="row">@item.Address</td>
+                                    <td scope="row">@item.Address_2</td>
+                                    <td scope="row">@item.Postcode</td>
+                                    <td scope="row">@item.EMail_Home</td>
+                                    <td scope="row">@item.Start_Date</td>
+                                </tr>
+                            }
+                        } 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
