@@ -20,7 +20,7 @@ namespace WebApplication2.Classes
             connectionString = new SqlConnection(ConnectionString);//Path
             try
             {
-                connectionString.Open(); 
+                connectionString.Open();
                 queryConnectDB = new SqlCommand("use DataBase_1", connectionString);
                 queryConnectDB.Connection = connectionString;
                 queryConnectDB.ExecuteNonQuery();
@@ -34,8 +34,6 @@ namespace WebApplication2.Classes
                 Console.WriteLine("БД подключено");
             }
         }
-
-
         public async Task Add_to_DB(List<ModelDB> data)
         {
             //query for write all data in table [Employees]
@@ -45,18 +43,18 @@ namespace WebApplication2.Classes
                     $"VALUES ( '{item.Payroll_Number}','{item.Forenames}','{item.Surname}'," +
                     $"'{item.Date_of_Birth}',{item.Telephone},{item.Mobile},'{item.Address}','{item.Address_2}'," +
                     $"'{item.Postcode}','{item.EMail_Home}','{item.Start_Date}')", connectionString);
-                
+
                 queryConnectDB.ExecuteNonQuery(); // выполнить командлу
             }
 
         }
 
         //load all data from table [Employees]
-        public async Task< List<ModelDB> > Load_From_DB()
-        { 
+        public async Task<List<ModelDB>> Load_From_DB()
+        {
             //query for get all data
 
-            SqlCommand query = new SqlCommand("SELECT * FROM [Employees]", connectionString); // создать команду
+            SqlCommand query = new SqlCommand("SELECT * FROM [Employees] order by [Surname] desc", connectionString); // создать команду
 
             SqlDataReader answer = query.ExecuteReader(); // выполнить командлу
 

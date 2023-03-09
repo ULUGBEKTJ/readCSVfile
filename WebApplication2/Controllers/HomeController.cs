@@ -32,12 +32,13 @@ namespace WebApplication2.Controllers
             List<ModelDB> data = await data_Import.Load_From_DB();
             //send everything to the page
             ViewBag.data = data;
+            ViewBag.dataLength = data.Count;
             //dispose all resource
             data_Import.Quit();
-            
+
             return View();
         }
-         
+
 
         public IActionResult Privacy()
         {

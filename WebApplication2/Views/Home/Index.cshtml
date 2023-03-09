@@ -1,10 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Data";
 }
-
+<h3>@ViewBag.dataLength - rows were loaded </h3>
 
 @using (Html.BeginForm("Upload", "Home", FormMethod.Post,
-  new { enctype = "multipart/form-data" }))
+ new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -46,13 +46,13 @@
                             <th>Payroll_Number</th>
 
                             <th>Forenames</th>
-                            
+
                             <th>Surname</th>
-                            
+
                             <th>Date_of_Birth</th>
-                            
+
                             <th>Telephone</th>
-                            
+
                             <th>Mobile</th>
 
                             <th>Address</th>
@@ -85,7 +85,7 @@
                                     <td scope="row">@item.Start_Date</td>
                                 </tr>
                             }
-                        } 
+                        }
                     </tbody>
                 </table>
             </div>
